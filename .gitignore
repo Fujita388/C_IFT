@@ -1,0 +1,7 @@
+*.dat
+*.lammpstrj
+*.lammps
+*.out
+*.atoms
+venv
+result
