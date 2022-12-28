@@ -3,7 +3,7 @@ atom_style bond
 boundary p p p
 timestep 0.001
 
-read_data interface_tension.atoms
+read_data C_IFT/interface_tension.atoms
 
 # solvent: atom 1, hydrophobic group: atom 2
 mass 1 1.0
@@ -14,11 +14,13 @@ pair_coeff 1 1 1.0 1.0 3.0
 pair_coeff 1 2 1.0 1.0 1.12246
 pair_coeff 2 2 1.0 1.0 3.0
 
-bond_style fene
-bond_coeff 1 30.0 1.5 1.5 1.0 
+bond_style harmonic
+bond_coeff * 80.0 1.2
 
 neighbor 0.3 bin
 neigh_modify every 20 delay 0 check no
+
+velocity all create 0.7 33 units box mom yes
 
 fix 1 all nvt temp 0.7 0.7 0.1
 
@@ -31,9 +33,9 @@ compute tempid all temp
 compute stress all stress/atom NULL
 compute stress2 all pressure thermo_temp
 
-fix binave all ave/chunk 1 100000 100000 layers density/mass temp c_stress[*] file stress_tensor.dat ave running norm none
+fix binave all ave/chunk 1 100000 100000 layers density/mass temp c_stress[*] file C_IFT/stress_tensor.dat ave running norm none
 
-dump id all custom 100000 interface_tension.lammpstrj id type x y z vx vy vz
+dump id all custom 100000 C_IFT/interface_tension.lammpstrj id type x y z vx vy vz
 
 thermo 5000
-run 250000
+run 10000000

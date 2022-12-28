@@ -102,10 +102,10 @@ def save_file(filename, atoms, N, l):
         f.write("Atoms\n\n")  # atom ID, molcule ID, atom type, atomic coordinates
         for i, a in enumerate(atoms):
             f.write("{} {} {} {} {} {}\n".format(i+1, a.mol_id, a.atom_type, a.x, a.y, a.z))
-        f.write("\n")
-        f.write("Velocities\n\n")  # atom ID, atomic velocities
-        for i, a in enumerate(atoms):
-            f.write("{} {} {} {}\n".format(i+1, a.vx, a.vy, a.vz))
+#        f.write("\n")
+#        f.write("Velocities\n\n")  # atom ID, atomic velocities
+#        for i, a in enumerate(atoms):
+#            f.write("{} {} {} {}\n".format(i+1, a.vx, a.vy, a.vz))
         f.write("\n")
         f.write("Bonds\n\n")  # bond ID, bond type, atom ID1, atom ID2
         bond_id = 1  # bond ID

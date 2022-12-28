@@ -4,5 +4,5 @@ with open("interface_tension.atoms", "r") as f:
     lines = f.readlines()
 A = float(lines[2].split()[0])  # 全粒子数
 B = float(lines[3].split()[0])  # Bond数
-C =  100 * (B / (A - B))  # 濃度(%)
+C = 100 * (B / (A - B))  # 濃度(%)
 print(C)
